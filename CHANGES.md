@@ -1,6 +1,9 @@
 # CHANGES
 
-## setup:(pinia and fix failed build)
+## feat:(add api layer)
 
-- Pin `@tsconfig/node22` to `22.0.1`
-- Pin `vue-router` to `~4.4.5`
+- Add `src/services/rockets.ts` with `fetchRockets` / `fetchRocket`
+- Create global directory for global usage utils and type
+- Add `src/types/rocket.ts` so the `Rocket`
+- Add `src/utils/http.ts` with a `getJson` helper that throws on HTTP
+  errors
