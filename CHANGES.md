@@ -1,7 +1,7 @@
 # CHANGES
 
-## feat:(rocket detail screen)
+## feat:(rocket filter)
 
-- Add `src/pages/rockets/[id].vue`: as detail page from selected data rocket witch caching method
-- Extract `src/components/RocketImage.vue` from `src/components/RocketCard.vue`
-- Add `src/utils/format.ts` for global utils function
+- Add a name search field on the list screen: case-insensitive (client side search filter)
+- Show a "No rockets match" message for empty results
+- Add debounce concept to future development

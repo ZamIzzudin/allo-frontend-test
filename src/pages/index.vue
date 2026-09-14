@@ -38,25 +38,71 @@
       </v-btn>
     </v-alert>
 
-    <v-row v-else>
-      <v-col
-        v-for="rocket in rocketsStore.rockets"
-        :key="rocket.id"
-        cols="12"
-        sm="6"
-        md="4"
+    <template v-else>
+      <v-text-field
+        v-model="filter"
+        prepend-inner-icon="mdi-magnify"
+        placeholder="Search rockets by name"
+        clearable
+        hide-details
+        density="comfortable"
+        class="mb-6"
+        style="max-width: 400px"
+      />
+
+      <p
+        v-if="filteredRockets.length === 0"
+        class="text-center text-medium-emphasis mt-8"
       >
-        <RocketCard :rocket="rocket" />
-      </v-col>
-    </v-row>
+        No rockets match your search.
+      </p>
+
+      <v-row v-else>
+        <v-col
+          v-for="rocket in filteredRockets"
+          :key="rocket.id"
+          cols="12"
+          sm="6"
+          md="4"
+        >
+          <RocketCard :rocket="rocket" />
+        </v-col>
+      </v-row>
+    </template>
   </v-container>
 </template>
 
 <script setup lang="ts">
-  import { onMounted } from 'vue'
+  import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
   import { useRocketsStore } from '@/stores/rockets'
+  import { debounce } from '@/utils/debounce'
 
   const rocketsStore = useRocketsStore()
+
+  const filter = ref<string | null>('')
+  const searchQuery = ref('')
+
+  const applyFilter = debounce((value: string) => {
+    searchQuery.value = value.trim().toLowerCase()
+  }, 300)
+
+  watch(filter, value => {
+    if (!value) {
+      applyFilter.cancel()
+      searchQuery.value = ''
+      return
+    }
+    applyFilter(value)
+  })
+
+  onBeforeUnmount(() => applyFilter.cancel())
+
+  const filteredRockets = computed(() => {
+    if (!searchQuery.value) return rocketsStore.rockets
+    return rocketsStore.rockets.filter(rocket =>
+      rocket.fullName.toLowerCase().includes(searchQuery.value),
+    )
+  })
 
   onMounted(() => {
     rocketsStore.load()
