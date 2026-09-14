@@ -1,8 +1,11 @@
 <template>
   <v-container>
-    <h1 class="text-h4 mb-6">
-      SpaceX Rockets
-    </h1>
+    <div class="d-flex align-center justify-space-between mb-6">
+      <h1 class="text-h4">
+        SpaceX Rockets
+      </h1>
+      <AddRocketDialog @added="filter = null" />
+    </div>
 
     <div
       v-if="rocketsStore.loading"

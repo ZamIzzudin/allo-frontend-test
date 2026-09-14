@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AddRocketDialog: typeof import('./src/components/AddRocketDialog.vue')['default']
     RocketCard: typeof import('./src/components/RocketCard.vue')['default']
     RocketImage: typeof import('./src/components/RocketImage.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

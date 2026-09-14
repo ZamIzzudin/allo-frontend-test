@@ -7,3 +7,5 @@ export interface Rocket {
   countryCode: string | null
   maidenFlight: string | null
 }
+
+export type NewRocket = Omit<Rocket, 'id'>
