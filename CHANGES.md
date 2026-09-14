@@ -1,11 +1,6 @@
 # CHANGES
 
-## setup: cleaning boilerplate
+## setup:(pinia and fix failed build)
 
-Clean up the default `create-vuetify` scaffold
-
-- Delete `src/components/HelloWorld.vue`
-- Delete `src/assets/logo.png` and `src/assets/logo.svg`
-- Replace `src/pages/index.vue` with a plain heading.
-- Update the document title in `index.html` from "Welcome to Vuetify 3" to
-  "SpaceX Rockets"
+- Pin `@tsconfig/node22` to `22.0.1`
+- Pin `vue-router` to `~4.4.5`
