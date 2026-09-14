@@ -1,8 +1,6 @@
 # CHANGES
 
-## feat:(add rocket store)
+## feat:(rocket list screen)
 
-- Add `src/stores/rockets.ts`: pinia setup store with the rocket list
-  cache and `loading` / `error` / `loaded` state
-- `load()` doubles as retry and skips refetching once loaded, keeping
-  repeat visits within the API rate limit
+- Update `src/pages/index.vue` with the rocket list
+- Add `src/components/RocketCard.vue` for reusable component in the future
