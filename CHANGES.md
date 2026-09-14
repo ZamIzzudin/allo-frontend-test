@@ -1,9 +1,8 @@
 # CHANGES
 
-## feat:(add api layer)
+## feat:(add rocket store)
 
-- Add `src/services/rockets.ts` with `fetchRockets` / `fetchRocket`
-- Create global directory for global usage utils and type
-- Add `src/types/rocket.ts` so the `Rocket`
-- Add `src/utils/http.ts` with a `getJson` helper that throws on HTTP
-  errors
+- Add `src/stores/rockets.ts`: pinia setup store with the rocket list
+  cache and `loading` / `error` / `loaded` state
+- `load()` doubles as retry and skips refetching once loaded, keeping
+  repeat visits within the API rate limit
