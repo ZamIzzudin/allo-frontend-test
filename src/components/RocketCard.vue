@@ -1,22 +1,9 @@
 <template>
-  <v-card>
-    <v-img
-      v-if="rocket.imageUrl"
+  <v-card :to="`/rockets/${rocket.id}`">
+    <RocketImage
       :src="rocket.imageUrl"
-      cover
-      height="200"
+      :height="200"
     />
-    <v-sheet
-      v-else
-      color="grey-darken-3"
-      height="200"
-      class="d-flex align-center justify-center"
-    >
-      <v-icon
-        icon="mdi-rocket-launch-outline"
-        size="48"
-      />
-    </v-sheet>
 
     <v-card-title>{{ rocket.fullName }}</v-card-title>
 

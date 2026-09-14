@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     RocketCard: typeof import('./src/components/RocketCard.vue')['default']
+    RocketImage: typeof import('./src/components/RocketImage.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

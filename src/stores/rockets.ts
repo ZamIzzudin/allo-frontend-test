@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
-import { fetchRockets } from '@/services/rockets'
+import { fetchRocket, fetchRockets } from '@/services/rockets'
 import type { Rocket } from '@/types/rocket'
 
 export const useRocketsStore = defineStore('rockets', () => {
@@ -24,5 +24,17 @@ export const useRocketsStore = defineStore('rockets', () => {
     }
   }
 
-  return { rockets, loading, error, loaded, load }
+  function findRocket (id: number): Rocket | undefined {
+    return rockets.value.find(rocket => rocket.id === id)
+  }
+  
+  async function loadRocket (id: number): Promise<Rocket> {
+    const cached = findRocket(id)
+    if (cached) return cached
+    const rocket = await fetchRocket(id)
+    rockets.value.push(rocket)
+    return rocket
+  }
+
+  return { rockets, loading, error, loaded, load, findRocket, loadRocket }
 })

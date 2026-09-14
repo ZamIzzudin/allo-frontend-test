@@ -1,6 +1,7 @@
 # CHANGES
 
-## feat:(rocket list screen)
+## feat:(rocket detail screen)
 
-- Update `src/pages/index.vue` with the rocket list
-- Add `src/components/RocketCard.vue` for reusable component in the future
+- Add `src/pages/rockets/[id].vue`: as detail page from selected data rocket witch caching method
+- Extract `src/components/RocketImage.vue` from `src/components/RocketCard.vue`
+- Add `src/utils/format.ts` for global utils function
